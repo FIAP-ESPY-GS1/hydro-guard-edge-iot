@@ -1,4 +1,4 @@
-README — Projeto Bueiro Inteligente com Alerta via SMS
+#README — Projeto Bueiro Inteligente com Alerta via SMS
 
 🚀 Descrição do Projeto
 O projeto consiste em um bueiro inteligente, desenvolvido para monitorar o nível de resíduos dentro de seu compartimento. O sistema utiliza um sensor ultrassônico para medir a altura dos resíduos e, quando atinge um limite previamente definido, envia um SMS de alerta para o responsável pela manutenção, utilizando o módulo GSM SIM800L.
