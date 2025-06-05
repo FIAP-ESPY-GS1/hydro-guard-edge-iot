@@ -69,6 +69,26 @@ Quando o lixo ultrapassa o limite (≤ 10 cm), o Arduino envia comandos AT ao SI
 > **📲 “Atenção! O bueiro localizado em [local] está cheio. Favor realizar a manutenção.”**
 
 ---
+ ## 🧪 **Como Simular o Projeto no Tinkercad**  
+Você pode testar o funcionamento básico do projeto (sem o módulo GSM) diretamente no simulador online Tinkercad.  
+
+
+🔗 Acesse o projeto no Tinkercad pelo link:  
+
+👉 [Simular no Tinkercad - Bueiro Inteligente](https://www.tinkercad.com/things/gH5OR1aNBKg-bueiro-inteligente?sharecode=_kgdMWjJRYhMHPt-zChGMjxzrbSMveiN8-94f1-tAgg)  
+
+ No simulador, você verá o funcionamento do sensor ultrassônico, display LCD e alerta sonoro via buzzer.  
+
+### 🚀 **Passos para simular:**  
+1. Acesse o link acima.  
+2. Clique em **“Tinker este projeto”** (ou **"Tinker this"**) para abrir no modo de edição.  
+3. Clique em **“Iniciar Simulação”** no canto superior direito.  
+4. Observe o funcionamento:  
+   - O display LCD mostrará o status.  
+   - O buzzer soará quando o nível de lixo estiver acima do limite.  
+5. Você pode interagir ajustando a distância no sensor ultrassônico para simular diferentes níveis de lixo no bueiro.  
+
+> ⚠️ O envio de SMS não é suportado no simulador. Essa funcionalidade ocorre apenas no hardware real.
 
 ## 📷 Imagens do Projeto
 
