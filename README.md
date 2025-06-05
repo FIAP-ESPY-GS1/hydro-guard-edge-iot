@@ -8,14 +8,11 @@ Este projeto visa prevenir o entupimento dos bueiros, facilitando a manutenção
 
 🧠 Funcionamento
 O sensor ultrassônico HC-SR04 mede a distância entre o topo do bueiro e o nível do lixo.
-
 Quando a distância é menor ou igual a 10 cm, significa que o bueiro está cheio.
-
 Nesse momento, o sistema ativa um alerta:
-
 No protótipo: som de um buzzer e mensagem no display LCD.
-
 Na aplicação real: envio de SMS via módulo GSM SIM800L, informando que o bueiro precisa de esvaziamento.
+
 
 🔧 Componentes Utilizados
 🎛️ No protótipo (imagem do simulador):
@@ -66,10 +63,24 @@ Quando o nível do lixo atingir ou ultrapassar o limite (distância ≤ 10 cm), 
 
 📲 “Atenção! O bueiro localizado em [local] está cheio. Favor realizar a manutenção.”
 
+🧪 **Como Simular o Projeto no Tinkercad**  
+Você pode testar o funcionamento básico do projeto (sem o módulo GSM) diretamente no simulador online Tinkercad.  
+
+🔗 **Acesse o projeto no Tinkercad pelo link:**  
+👉 [Simular no Tinkercad - Bueiro Inteligente](https://www.tinkercad.com/things/gH5OR1aNBKg-bueiro-inteligente?sharecode=_kgdMWjJRYhMHPt-zChGMjxzrbSMveiN8-94f1-tAgg)  
+
+> ✅ No simulador, você verá o funcionamento do sensor ultrassônico, display LCD e alerta sonoro via buzzer.  
+
+---
 📷 Imagens do Projeto
 ✅ Protótipo no simulador:
 (./assets/img/print-tinkercad.png)
 
 ✅ Módulo GSM SIM800L:
 (./assets/img/Modulo-Gsm.png)
+
+---
+
+💡 **Observações Finais**  
+Este projeto é uma solução de baixo custo, escalável e pode ser aplicado em diferentes pontos da cidade para auxiliar na gestão inteligente de resíduos pluviais.  
 
