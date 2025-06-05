@@ -1,86 +1,99 @@
-# Projeto Bueiro Inteligente com Alerta via SMS
+# 💧 GS - Bueiro Inteligente com Alerta via SMS
 
+## 🚀 Descrição do Projeto
 
-🚀 Descrição do Projeto
-O projeto consiste em um bueiro inteligente, desenvolvido para monitorar o nível de resíduos dentro de seu compartimento. O sistema utiliza um sensor ultrassônico para medir a altura dos resíduos e, quando atinge um limite previamente definido, envia um SMS de alerta para o responsável pela manutenção, utilizando o módulo GSM SIM800L.
+Este projeto tem como objetivo prevenir entupimentos e alagamentos urbanos através de um **bueiro inteligente**, capaz de **monitorar o nível de resíduos** com um sensor ultrassônico. Quando o limite de resíduos é atingido, um **alerta via SMS** é enviado ao responsável pela manutenção, utilizando o **módulo GSM SIM800L**.
 
-Este projeto visa prevenir o entupimento dos bueiros, facilitando a manutenção preventiva e reduzindo alagamentos urbanos.
+## 🧠 Funcionamento
 
-🧠 Funcionamento
-O sensor ultrassônico HC-SR04 mede a distância entre o topo do bueiro e o nível do lixo.
-Quando a distância é menor ou igual a 10 cm, significa que o bueiro está cheio.
-Nesse momento, o sistema ativa um alerta:
-No protótipo: som de um buzzer e mensagem no display LCD.
-Na aplicação real: envio de SMS via módulo GSM SIM800L, informando que o bueiro precisa de esvaziamento.
+- O **sensor ultrassônico HC-SR04** mede a distância entre o topo do bueiro e o nível de resíduos.
+- Quando essa distância for **menor ou igual a 10 cm**, significa que o bueiro está cheio.
+- O sistema então emite um alerta:
+  - **Protótipo**: buzzer sonoro e mensagem no display LCD.
+  - **Aplicação real**: envio de SMS informando a necessidade de esvaziamento.
 
+---
 
-🔧 Componentes Utilizados
-🎛️ No protótipo (imagem do simulador):
-1x Arduino Uno
+## 🔧 Componentes Utilizados
 
-1x Sensor Ultrassônico HC-SR04
+### 🎛️ Protótipo (Simulador)
 
-1x Display LCD 16x2 + módulo I2C (opcional, mas recomendado)
+- 1x Arduino Uno  
+- 1x Sensor Ultrassônico HC-SR04  
+- 1x Display LCD 16x2 com módulo I2C  
+- 1x Buzzer Piezoelétrico  
+- 1x Protoboard  
+- Cabos jumpers (macho-macho e macho-fêmea)
 
-1x Buzzer Piezoelétrico
+### 📡 Para Envio de SMS (SIM800L)
 
-1x Protoboard
+- 1x Módulo GSM GPRS SIM800L  
+- 1x Fonte de alimentação externa (4.0V a 4.2V – **essencial**)  
+- Capacitores de desacoplamento (1000µF — opcional)  
+- Regulador ou divisor de tensão para comunicação RX/TX (SIM800L opera em 3.3V)
 
-Cabos jumpers macho-macho e macho-fêmea
+---
 
-🔗 Componentes adicionais para o envio de SMS (não disponíveis no simulador):
-1x Módulo GSM GPRS SIM800L
+## 🔌 Esquemático de Conexões
 
-1x Fonte de alimentação externa (4V a 4.2V — fundamental para o SIM800L)
+### 📐 Protótipo no Simulador
 
-Capacitores de desacoplamento (1000uF, opcional para estabilidade)
+| Componente       | Pino Arduino | Descrição                  |
+|------------------|--------------|----------------------------|
+| HC-SR04 - Trig   | D9           | Disparo do ultrassônico    |
+| HC-SR04 - Echo   | D10          | Recepção do sinal          |
+| HC-SR04 - VCC    | 5V           | Alimentação                |
+| HC-SR04 - GND    | GND          | Terra                      |
+| Buzzer           | D8           | Alerta sonoro              |
+| LCD - SDA        | A4           | Comunicação I2C            |
+| LCD - SCL        | A5           | Comunicação I2C            |
+| LCD - VCC / GND  | 5V / GND     | Alimentação                |
 
-Regulador de tensão ou divisor de tensão para comunicação dos pinos RX/TX com o Arduino (pois o SIM800L opera com 3.3V nos pinos de sinal)
+### 📶 Módulo GSM SIM800L
 
-🔌 Esquemático de Conexões (Protótipo do Simulador)
-Componente	Pino no Arduino	Descrição
-HC-SR04 - Trig	D9	Disparo do ultrassônico
-HC-SR04 - Echo	D10	Recepção do sinal
-HC-SR04 - VCC	5V	Alimentação
-HC-SR04 - GND	GND	Terra
-Buzzer	D8	Alerta sonoro
-LCD RS	D12	Comunicação
-LCD E	D11	Comunicação
-LCD D4-D7	D5-D2	Comunicação
-LCD VCC/GND	5V/GND	Alimentação
+| SIM800L         | Conexão            | Observações                                              |
+|------------------|--------------------|----------------------------------------------------------|
+| VCC              | Fonte externa (4V) | ⚠️ Nunca ligar direto no 5V do Arduino                  |
+| GND              | GND                | Terra comum                                              |
+| TX               | D7 (RX Arduino)    | Comunicação serial                                       |
+| RX               | D6 (TX Arduino)    | ⚠️ Usar divisor de tensão (SIM800L usa 3.3V nos sinais) |
 
-📡 Conexão do Módulo GSM SIM800L
-Módulo SIM800L	Pino no Arduino	Descrição
-VCC	Fonte externa (4V)	⚠️ Nunca ligar direto no 5V do Arduino
-GND	GND	Terra
-TX	D7 (RX Arduino)	Comunicação serial
-RX	D6 (TX Arduino, com divisor de tensão)	Comunicação serial
+> ⚠️ **Importante:** O SIM800L exige fonte de 4.0V–4.2V com corrente mínima de **2A**.
 
-🔋 Observação: O SIM800L precisa de alimentação estável entre 4.0V e 4.2V, com pelo menos 2A de corrente. Uma fonte dedicada é indispensável.
+---
 
-📨 Lógica do Envio de SMS
-Quando o nível do lixo atingir ou ultrapassar o limite (distância ≤ 10 cm), o Arduino envia comandos AT para o SIM800L, que realiza o envio do SMS com a seguinte mensagem:
+## 📨 Lógica de Envio de SMS
 
-📲 “Atenção! O bueiro localizado em [local] está cheio. Favor realizar a manutenção.”
+Quando o lixo ultrapassa o limite (≤ 10 cm), o Arduino envia comandos AT ao SIM800L, que transmite o seguinte SMS:
 
-🧪 **Como Simular o Projeto no Tinkercad**  
+> **📲 “Atenção! O bueiro localizado em [local] está cheio. Favor realizar a manutenção.”**
+
+---
+ ## 🧪 **Como Simular o Projeto no Tinkercad**  
 Você pode testar o funcionamento básico do projeto (sem o módulo GSM) diretamente no simulador online Tinkercad.  
 
-🔗 **Acesse o projeto no Tinkercad pelo link:**  
+
+🔗 Acesse o projeto no Tinkercad pelo link:  
+
 👉 [Simular no Tinkercad - Bueiro Inteligente](https://www.tinkercad.com/things/gH5OR1aNBKg-bueiro-inteligente?sharecode=_kgdMWjJRYhMHPt-zChGMjxzrbSMveiN8-94f1-tAgg)  
 
-> ✅ No simulador, você verá o funcionamento do sensor ultrassônico, display LCD e alerta sonoro via buzzer.  
+ No simulador, você verá o funcionamento do sensor ultrassônico, display LCD e alerta sonoro via buzzer.  
 
----
-📷 Imagens do Projeto
-✅ Protótipo no simulador:
-(./assets/img/print-tinkercad.png)
+### 🚀 **Passos para simular:**  
+1. Acesse o link acima.  
+2. Clique em **“Tinker este projeto”** (ou **"Tinker this"**) para abrir no modo de edição.  
+3. Clique em **“Iniciar Simulação”** no canto superior direito.  
+4. Observe o funcionamento:  
+   - O display LCD mostrará o status.  
+   - O buzzer soará quando o nível de lixo estiver acima do limite.  
+5. Você pode interagir ajustando a distância no sensor ultrassônico para simular diferentes níveis de lixo no bueiro.  
 
-✅ Módulo GSM SIM800L:
-(./assets/img/Modulo-Gsm.png)
+> ⚠️ O envio de SMS não é suportado no simulador. Essa funcionalidade ocorre apenas no hardware real.
 
----
+## 📷 Imagens do Projeto
 
-💡 **Observações Finais**  
-Este projeto é uma solução de baixo custo, escalável e pode ser aplicado em diferentes pontos da cidade para auxiliar na gestão inteligente de resíduos pluviais.  
+### ✅ Protótipo no Simulador  
+![Protótipo no simulador](./assets/img/print-tinkercad.png)
 
+### ✅ Módulo GSM SIM800L  
+![Módulo GSM SIM800L](./assets/img/Modulo-Gsm.png)
