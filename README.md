@@ -95,6 +95,14 @@ Você pode testar o funcionamento básico do projeto (sem o módulo GSM) diretam
 https://youtu.be/eo4KqyWgmy0
 
 ---
+## 👩‍💻 Equipe
+
+- Gabriel Augusto Gonçalves Pereira (RM564126)  
+- Beatriz Cortêz Gomes (RM561431)  
+- Bruno Henrique Campos Alves (RM563986)
+
+---
+
 
 ## 📷 Imagens do Projeto
 
