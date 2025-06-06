@@ -90,6 +90,12 @@ Você pode testar o funcionamento básico do projeto (sem o módulo GSM) diretam
 
 > ⚠️ O envio de SMS não é suportado no simulador. Essa funcionalidade ocorre apenas no hardware real.
 
+---
+## Link do Video
+https://youtu.be/eo4KqyWgmy0
+
+---
+
 ## 📷 Imagens do Projeto
 
 ### ✅ Protótipo no Simulador  
